@@ -12,8 +12,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("devs").password("{noop}123").authorities("ADMIN");
-		auth.inMemoryAuthentication().withUser("user").password("{noop}123").authorities("USER");
+		auth.inMemoryAuthentication().withUser("customer").password("{noop}123").authorities("CUSTOMER");
 		auth.inMemoryAuthentication().withUser("manager").password("{noop}123").authorities("MANAGER");
 	}
 	
@@ -21,7 +20,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 		.antMatchers("/default").permitAll()
 		.antMatchers("/welcome").authenticated()
-		.antMatchers("/admin").hasAuthority("ADMIN")
 		.antMatchers("/user").hasAuthority("USER")
 		.antMatchers("/manager").hasAuthority("MANAGER")
 		.anyRequest()
