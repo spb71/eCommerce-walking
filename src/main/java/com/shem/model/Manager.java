@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="datajpa")
+@Table(name="datajpa2")
 public class Manager {
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
